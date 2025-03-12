@@ -28,11 +28,13 @@ jobs:
       
     - run: javac src/main/java/com/vroozi/HollowWorld.java
     - run: jar cf HollowWorld.jar src/main/java/com/vroozi/HollowWorld.class
+    - run: ls
 
     - name: Upload JAR to GitHub Artifacts
       uses: actions/upload-artifact@v4.6.1
       with:
         name: HollowWorld.jar
+        path: /
         if-no-files-found: error
       
     
