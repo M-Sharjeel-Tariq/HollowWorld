@@ -26,5 +26,13 @@ jobs:
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
       
-    - run: java src/main/java/com/vroozi/HollowWorld.java
+    - run: javac src/main/java/com/vroozi/HollowWorld.java
+    - run: jar cf HollowWorld.jar src/main/java/com/vroozi/HollowWorld.class
+
+    - name: Upload JAR to GitHub Artifacts
+      uses: actions/upload-artifact@v4.6.1
+      with:
+        name: HollowWorld.jar
+        if-no-files-found: error
+      
     
